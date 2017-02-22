@@ -15,17 +15,23 @@ public class MySet<T> extends MyArrayList<T>{
 
     @Override
     public void add(T item){
-
+        if(!contains(item)){
+            super.add(item);
+        }
     }
 
     @Override
     public void add(T item, int index){
-
+        if(!contains(item)){
+            super.add(item, index);
+        }
     }
 
     @Override
     public void set(T item, int index){
-
+        if(!contains(item)){
+            super.set(item, index);
+        }
     }
 
 }

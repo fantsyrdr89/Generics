@@ -1,7 +1,5 @@
 package armstrong.alexandra;
 
-import java.lang.reflect.Array;
-
 public class MyArrayList<T> {
     private T contains;
     private T[] arr;
