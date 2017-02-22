@@ -3,6 +3,7 @@ package armstrong.alexandra;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class MySetTest {
@@ -46,6 +47,18 @@ public class MySetTest {
         int expected = 4;
         int actual = test.get(0);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addTest5(){
+        test.add(4, 0);
+        Integer[] expected = {4, 1, 2, 3};
+        Object[] temp = test.toArray();
+        Integer[] actual = new Integer[temp.length];
+        for(int i = 0; i < temp.length; i++){
+            actual[i] = (Integer) temp[i];
+        }
+        assertArrayEquals(expected, actual);
     }
 
     @Test
