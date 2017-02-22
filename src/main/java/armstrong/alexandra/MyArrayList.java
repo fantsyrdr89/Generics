@@ -38,6 +38,9 @@ public class MyArrayList<T> {
 
     public void increaseSize(){
         T[] tempArr = (T[])  new Object [counter * 2];
+        for(int i = 0; i < counter; i++){
+            tempArr[i] = arr[i];
+        }
         arr = tempArr;
     }
 
@@ -65,19 +68,19 @@ public class MyArrayList<T> {
     }
 
     public boolean isEmpty(){
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] != null){
-                return false;
-            }
+        if (counter > 0){
+            return false;
+        } else {
+            return true;
         }
-        return true;
     }
 
     public boolean isFull(){
         if(counter == arr.length){
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     public boolean contains(T item){

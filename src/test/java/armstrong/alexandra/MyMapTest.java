@@ -102,24 +102,6 @@ public class MyMapTest {
     }
 
     @Test
-    public void isFullTestFalse(){
-        test.clear();
-        assertFalse(test.isFull());
-    }
-
-    @Test
-    public void isFullTestTrue(){
-        test.add("Four", 4);
-        test.add("Five", 5);
-        test.add("Six", 6);
-        test.add("Seven", 7);
-        test.add("Eight", 8);
-        test.add("Nine", 9);
-        test.add("Ten",10);
-        assertTrue(test.isFull());
-    }
-
-    @Test
     public void containsKeyTestFalse(){
         assertFalse(test.containsKey("Four"));
     }
@@ -142,14 +124,22 @@ public class MyMapTest {
     @Test
     public void keySetTest(){
         String[] expected = {"One", "Two", "Three"};
-        String[] actual = test.keySet();
+        Object[] temp = test.keySet();
+        String[] actual = new String[temp.length];
+        for(int i = 0; i < temp.length; i++){
+            actual[i] = (String) temp[i];
+        }
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void valueListTest(){
         Integer[] expected = {1, 2, 3};
-        Integer[] actual = test.valueList();
+        Object[] temp = test.valueList();
+        Integer[] actual = new Integer[temp.length];
+        for(int i = 0; i < temp.length; i++){
+            actual[i] = (Integer) temp[i];
+        }
         assertArrayEquals(expected, actual);
     }
 
