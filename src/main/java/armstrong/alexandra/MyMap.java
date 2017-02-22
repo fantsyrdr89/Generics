@@ -1,25 +1,13 @@
 package armstrong.alexandra;
-import armstrong.alexandra.Tuple.*;
 
 public class MyMap<A,B>{
     private MySet<A> key;
     private MyArrayList<B> value;
     private int counter = 0;
-    //public A key;
-    //public B value;
-
-    /*class Tuple<A,B>{
-        public A key;
-        public B value;
-        public Tuple(A a, B b){
-            key = a;
-            value = b;
-        }
-    }*/ //cast to the make it work pile for later
 
     public MyMap(){
-        key = new MySet<A>();
-        value = new MyArrayList<B>();
+        key = new MySet<>();
+        value = new MyArrayList<>();
     }
 
     public int length(){
@@ -28,19 +16,11 @@ public class MyMap<A,B>{
 
     public void add(A a, B b){
         if(!containsKey(a)) {
-            key.set(a, counter);
-            value.set(b, counter);
+            key.add(a);
+            value.add(b);
             counter++;
         }
     }
-
-    /*private void increaseSize(){
-        Tuple<A, B>[] tempArr = (Tuple<A,B>[]) new Object [counter * 2];
-        for(int i = 0; i < counter; i++){
-            tempArr[i] = arr[i];
-        }
-        arr = tempArr;
-    }*/
 
     public B getValue(A a){
         for(int i = 0; i < counter; i++){
@@ -51,84 +31,47 @@ public class MyMap<A,B>{
         return null;
     }
 
-    private int getIndex(A a){
-        for(int i = 0; i < counter; i++){
-            if (key.get(i) == a){
-                return i;
-            }
-        }
-        return -1;
-    }
-
     public void remove(A a){
-        if(getIndex(a) > -1) {
-            if(getIndex(a) == counter - 1){
-                counter--;
-            } else {
-                counter--;
-                for (int i = getIndex(a); i < counter; i++) {
-                    key.set(key.get(i + 1), i);
-                    value.set(value.get(i + 1), i);
-                }
-            }
+        if(key.indexOf(a) > -1) {
+            value.remove(key.indexOf(a));
+            key.remove(key.indexOf(a));
+            counter--;
         }
     }
 
     public void setValue(A a, B b){
         if(containsKey(a)){
-            value.set(b, getIndex(a));
+            value.set(b, key.indexOf(a));
         } else {
             add(a, b);
             counter++;
-        }
+        }//can delete else, better practice?
     }
 
     public void clear(){
-        key = new MySet<A>();
-        value = new MyArrayList<B>();
+        key = new MySet<>();
+        value = new MyArrayList<>();
         counter = 0;
     }
 
     public boolean isEmpty(){
-        if(counter > 0){
-            return false;
-        } else {
-            return true;
-        }
+        return key.isEmpty();
     }
 
     public boolean containsKey(A a){
-        for(int i = 0; i < counter; i++){
-            if (key.get(i) == a){
-                return true;
-            }
-        }
-        return false;
+        return key.contains(a);
     }
 
     public boolean containsValue(B b){
-        for(int i = 0; i < counter; i++){
-            if (value.get(i) == b){
-                return true;
-            }
-        }
-        return false;
+        return value.contains(b);
     }
 
-    public A[] keySet(){
-        A[] answer = (A[]) new Object[counter];
-        for(int i = 0; i < counter; i++){
-            answer[i] = key.get(i);
-        }
-        return answer;
+    public <A> A[] keySet(){
+        return key.toArray();
     }
 
-    public B[] valueList(){
-        B[] answer = (B[]) new Object[counter];
-        for(int i = 0; i < counter; i++){
-            answer[i] = value.get(i);
-        }
-        return answer;
+    public <B> B[] valueList(){
+        return value.toArray();
     }
 }
 

@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class MyArrayListTest {
@@ -65,6 +66,21 @@ public class MyArrayListTest {
         int expected = 4;
         int actual = test.get(2);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeTest3(){
+        test.add(3);
+        test.add(4);
+        test.add(5);
+        test.remove(2);
+        Integer[] expected = {1, 2, 4, 5};
+        Object[] temp = test.toArray();
+        Integer[] actual = new Integer[temp.length];
+        for(int i = 0; i < temp.length; i++){
+            actual[i] = (Integer) temp[i];
+        }
+        assertArrayEquals(expected, actual);
     }
 
     @Test

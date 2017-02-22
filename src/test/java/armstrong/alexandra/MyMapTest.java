@@ -22,8 +22,30 @@ public class MyMapTest {
     @Test
     public void addTest1(){
         test.add("Four", 4);
-        Integer expected = 4;
-        Integer actual = test.getValue("Four");
+        test.add("Five", 5);
+        test.add("Six", 5);
+        test.add("Seven", 5);
+        test.add("Eight", 5);
+        test.add("Nine", 5);
+        test.add("Ten", 5);
+        test.add("Eleven", 11);
+        Integer expected = 11;
+        Integer actual = test.getValue("Eleven");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addTest4(){
+        test.add("Four", 4);
+        test.add("Five", 5);
+        test.add("Six", 5);
+        test.add("Seven", 5);
+        test.add("Eight", 5);
+        test.add("Nine", 5);
+        test.add("Ten", 5);
+        test.add("Eleven", 11);
+        Integer expected = 11;
+        Integer actual = test.length();
         assertEquals(expected, actual);
     }
 
@@ -45,8 +67,8 @@ public class MyMapTest {
 
     @Test
     public void getValueTest(){
-        int expected = 3;
-        int actual = test.getValue("Three");
+        Integer expected = null;
+        Integer actual = test.getValue("Thore");
         assertEquals(expected, actual);
     }
 
@@ -56,6 +78,21 @@ public class MyMapTest {
         int expected = 2;
         int actual = test.length();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeTest3(){
+        test.add("Three",3);
+        test.add("Four",4);
+        test.add("Five", 5);
+        test.remove("Two");
+        Integer[] expected = {1, 3, 4, 5};
+        Object[] temp = test.valueList();
+        Integer[] actual = new Integer[temp.length];
+        for(int i = 0; i < temp.length; i++){
+            actual[i] = (Integer) temp[i];
+        }
+        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -124,6 +161,7 @@ public class MyMapTest {
     @Test
     public void keySetTest(){
         String[] expected = {"One", "Two", "Three"};
+        //String[] actual = test.keySet();
         Object[] temp = test.keySet();
         String[] actual = new String[temp.length];
         for(int i = 0; i < temp.length; i++){

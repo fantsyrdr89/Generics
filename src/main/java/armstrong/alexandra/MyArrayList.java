@@ -18,19 +18,17 @@ public class MyArrayList<T> {
     }
 
     public void add(T item){
-        if(isFull()){
-            increaseSize();
-        }
-        arr[counter] = item;
-        counter++;
+        add(item, counter);
     }
 
     public void add(T item, int index){
         if(isFull()){
             increaseSize();
         }
-        for(int i = counter; i > index; i--){
-            arr[i] = arr[i-1];
+        if(index < counter) {
+            for (int i = counter; i > index; i--) {
+                arr[i] = arr[i - 1];
+            }
         }
         arr[index] = item;
         counter++;
@@ -52,6 +50,7 @@ public class MyArrayList<T> {
         for(int i = index; i < counter; i++){
             arr[i] = arr[i + 1];
         }
+        arr[counter] = null;
         counter--;
     }
 
@@ -92,5 +91,30 @@ public class MyArrayList<T> {
         return false;
     }
 
+    public int indexOf(T item){
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] == item){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int lastIndexOf(T item){
+        for(int i = arr.length; i >= 0; i--){
+            if(arr[i] == item){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public <T> T[] toArray(){
+        T[] answer = (T[]) new Object[counter];
+        for(int i = 0; i < counter; i++){
+            answer[i] = (T) arr[i];
+        }
+        return answer;
+    }
 }
 
