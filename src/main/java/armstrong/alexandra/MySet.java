@@ -2,7 +2,7 @@ package armstrong.alexandra;
 
 public class MySet<T> extends MyArrayList<T>{
     private T contains;
-    private int counter;
+    private int counter = 0;
     private T[] arr;
 
     public MySet(){

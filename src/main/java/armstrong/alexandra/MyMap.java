@@ -2,7 +2,7 @@ package armstrong.alexandra;
 
 public class MyMap<A,B>{
     private Tuple<A,B>[] arr;
-    private int counter;
+    private int counter = 0;
     public A key;
     public B value;
 
