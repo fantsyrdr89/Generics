@@ -20,7 +20,7 @@ public class MyMapTest {
     }
 
     @Test
-    public void addTest1(){
+    public void addTest(){
         test.add("Four", 4);
         test.add("Five", 5);
         test.add("Six", 5);
@@ -73,7 +73,7 @@ public class MyMapTest {
     }
 
     @Test
-    public void removeTest1(){
+    public void removeTest(){
         test.remove("Three");
         int expected = 2;
         int actual = test.length();
@@ -133,7 +133,7 @@ public class MyMapTest {
     }
 
     @Test
-    public void isEmptyTestTrue(){
+    public void isEmptyTest(){
         test.clear();
         assertTrue(test.isEmpty());
     }
@@ -144,7 +144,7 @@ public class MyMapTest {
     }
 
     @Test
-    public void containsKeyTestTrue(){
+    public void containsKeyTest(){
         assertTrue(test.containsKey("Three"));
     }
 
@@ -154,7 +154,7 @@ public class MyMapTest {
     }
 
     @Test
-    public void containsValueTestTrue(){
+    public void containsValueTest(){
         assertTrue(test.containsValue(3));
     }
 

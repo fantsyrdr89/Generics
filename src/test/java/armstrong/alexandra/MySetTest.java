@@ -17,7 +17,7 @@ public class MySetTest {
     }
 
     @Test
-    public void addTest1(){
+    public void addTest(){
         test.add(3);
         int expected = 3;
         int actual = test.length();

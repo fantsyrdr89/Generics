@@ -19,7 +19,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void addTest1(){
+    public void addTest(){
         test.add(3);
         int expected = 3;
         int actual = test.length();
@@ -58,7 +58,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void removeTest1(){
+    public void removeTest(){
         test.add(3);
         test.add(4);
         test.add(5);
@@ -124,7 +124,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void isEmptyTestTrue(){
+    public void isEmptyTest(){
         test.clear();
         assertTrue(test.isEmpty());
     }
@@ -136,7 +136,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void isFullTestTrue(){
+    public void isFullTest(){
         test.add(3);
         test.add(4);
         test.add(5);
@@ -154,7 +154,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void containsTestTrue(){
+    public void containsTest(){
         assertTrue(test.contains(1));
     }
 
